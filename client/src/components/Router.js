@@ -5,7 +5,7 @@ import '../index.css';
 import LandingPage from './LandingPage/LandingPage';
 import Login from './LandingPage/Login';
 import Signup from './LandingPage/Signup';
-import Home from './App/Home';
+import Admin from './App/Admin';
 import Pricing from './LandingPage/Pricing';
 import Contact from './LandingPage/Contact';
 import Blog from './LandingPage/Blog/Blog';
@@ -17,7 +17,7 @@ class Router extends Component {
       <BrowserRouter>
         <div style={{height: '100%'}}>
           <Route exact path='/' component={LandingPage}/>
-          <Route exact path='/home' component={Home}/>
+          <Route exact path='/admin' component={Admin}/>
           <Route path='/login' component={Login}/>
           <Route path='/signup' component={Signup}/>
           <Route path='/intro' component={LandingPage}/>

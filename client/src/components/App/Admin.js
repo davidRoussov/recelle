@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import MenuBar from './MenuBar';
-import AppFooter from '../AppFooter';
+import SideBar from './SideBar';
 
-class Home extends Component {
+class Admin extends Component {
   render() {
     const style = {
       container: {
@@ -16,10 +16,10 @@ class Home extends Component {
     return (
       <div style={style.container}>
         <MenuBar/>
-        <AppFooter/>
+        <SideBar/>
       </div>
     );
   }
 }
 
-export default Home;
+export default Admin;
