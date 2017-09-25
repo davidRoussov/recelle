@@ -6,6 +6,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 import api from './api/api';
+import passport from 'passport';
+import session from 'express-session';
 
 // testing database ************************
 // const { Pool, Client } = require('pg');
@@ -17,6 +19,15 @@ import api from './api/api';
 //       .then(results => console.log(JSON.stringify(results.rows, null, 2)));
   // });
 //************************* 
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, './client/build')));
