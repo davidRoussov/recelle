@@ -1,7 +1,7 @@
 {
   "database": {
-    "user": "tyrvoyzz",
-    "url": "postgres://tyrvoyzz:13Q6urJ75zpVUqhZqShwBeEOaTxkEsjD@hard-plum.db.elephantsql.com:5432/tyrvoyzz",
-    "password": "13Q6urJ75zpVUqhZqShwBeEOaTxkEsjD"
+    "user": "btnaukyj",
+    "url": "postgres://btnaukyj:g9JaOJQrVwzgsVaKxjVfVyMA6TBpNV1F@pellefant.db.elephantsql.com:5432/btnaukyj",
+    "password": "g9JaOJQrVwzgsVaKxjVfVyMA6TBpNV1F"
   }
 }

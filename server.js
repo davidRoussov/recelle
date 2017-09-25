@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+import bodyParser from 'body-parser';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -19,6 +20,15 @@ import api from './api/api';
 
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, './client/build')));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // Answer API requests.
 app.get('/api', function (req, res) {

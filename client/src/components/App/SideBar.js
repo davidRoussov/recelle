@@ -13,7 +13,7 @@ class SideBar extends Component {
       <div class="row">
           <div className="side-menu">
           
-            <nav className="navbar navbar-default" role="navigation">
+            <nav className="navbar navbar-default">
               <div className="navbar-header">
                   <div className="brand-wrapper">
                       <button type="button" className="navbar-toggle">
@@ -40,10 +40,10 @@ class SideBar extends Component {
               <div className="side-menu-container">
                   <ul className="nav navbar-nav">
 
-                      <li><a href="#"><span className="glyphicon glyphicon-send"></span> Link</a></li>
-                      <li className="active"><a href="#"><span className="glyphicon glyphicon-plane"></span> Active Link</a></li>
-                      <li><a href="#"><span className="glyphicon glyphicon-cloud"></span> Link</a></li>
-                      <li><a href="#"><span className="glyphicon glyphicon-signal"></span> Link</a></li>
+                      <li><a href=""><span className="glyphicon glyphicon-send"></span>Analysis</a></li>
+                      {/* <li className="active"><a href="#"><span className="glyphicon glyphicon-plane"></span> Active Link</a></li> */}
+                      <li><a href=""><span className="glyphicon glyphicon-cloud"></span>Record</a></li>
+                      <li><a href=""><span className="glyphicon glyphicon-signal"></span>Research</a></li>
 
                   </ul>
               </div>

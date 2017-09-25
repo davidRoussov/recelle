@@ -1,7 +1,36 @@
 import React, { Component } from 'react';
 import { FormControl, FormGroup, Button, ControlLabel } from 'react-bootstrap';
+import { connect } from 'react-redux';
+
+import { signup } from '../../actions/auth';
 
 class Signup extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userInputsFirstName: '',
+      userInputsLastName: '',
+      userInputsEmailAddress: '',
+      userInputsPassword1: '',
+      userInputsPassword2: ''
+    };
+  }
+
+  submitSignup(e) {
+    e.preventDefault();
+    if(this.state.userInputsPassword1 === this.state.userInputsPassword2) {
+      this.props.signup({ ...this.state, password: this.state.userInputsPassword1 });
+    } else {
+      console.log('passwords don\'t match');
+    }
+  }
+
+  handleChangeUserInputsFirstName = e => this.setState({ userInputsFirstName: e.target.value });
+  handleChangeUserInputsLastName = e => this.setState({ userInputsLastName: e.target.value });
+  handleChangeUserInputsEmailAddress = e => this.setState({ userInputsEmailAddress: e.target.value });
+  handleChangeUserInputsPassword1 = e => this.setState({ userInputsPassword1: e.target.value });
+  handleChangeUserInputsPassword2 = e => this.setState({ userInputsPassword2: e.target.value });
+
   render() {
     const style = {
       container: {
@@ -42,13 +71,15 @@ class Signup extends Component {
         <div style={style.middle}>
           <div style={style.form} className='panel panel-default'>
             <div style={style.panelBody} className='panel-body'>
-              <form>
+              <form onSubmit={this.submitSignup.bind(this)}>
                 <FormGroup>
                   <ControlLabel style={style.label}>First name</ControlLabel>
                   <FormControl
                     type='text'
                     placeholder='First name'
                     style={style.inputField}
+                    value={this.state.userInputsFirstName}
+                    onChange={this.handleChangeUserInputsFirstName.bind(this)}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -57,6 +88,8 @@ class Signup extends Component {
                     type='text'
                     placeholder='Last name'
                     style={style.inputField}
+                    value={this.state.userInputsLastName}
+                    onChange={this.handleChangeUserInputsLastName.bind(this)}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -65,6 +98,8 @@ class Signup extends Component {
                     type='email'
                     placeholder='Email address'
                     style={style.inputField}
+                    value={this.state.userInputsEmailAddress}
+                    onChange={this.handleChangeUserInputsEmailAddress.bind(this)}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -73,6 +108,8 @@ class Signup extends Component {
                     type='password'
                     placeholder='Password'
                     style={style.inputField}
+                    value={this.state.userInputsPassword1}
+                    onChange={this.handleChangeUserInputsPassword1.bind(this)}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -81,6 +118,8 @@ class Signup extends Component {
                     type='password'
                     placeholder='Re-type password'
                     style={style.inputField}
+                    value={this.state.userInputsPassword2}
+                    onChange={this.handleChangeUserInputsPassword2.bind(this)}
                   />
                 </FormGroup>
                 <Button
@@ -97,4 +136,12 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+const mapStateToProps = state => {
+  return state;
+}
+
+const mapDispatchToProps = {
+  signup
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
