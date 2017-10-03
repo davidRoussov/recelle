@@ -32,7 +32,7 @@ export const login = creds =>
       },
       mode: 'cors',
       body: JSON.stringify({
-        creds
+        ...creds
       })
     })
     .then(response => response.json())

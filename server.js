@@ -6,12 +6,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 import api from './api/api';
+import auth from './api/auth';
 
 import initPassport from './passport-init';
 import passport from 'passport';
 import session from 'express-session';
-
-const auth = require('./api/auth')(passport);
 
 // testing database ************************
 // const { Pool, Client } = require('pg');
@@ -70,7 +69,8 @@ app.get('/api', function (req, res) {
   res.send('{"message":"Hello from the custom server!"}');
 });
 
-api(app);
+app.use('/api', api);
+app.use('/auth', auth(passport));
 
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {
