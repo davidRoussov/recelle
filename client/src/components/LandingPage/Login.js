@@ -1,7 +1,28 @@
 import React, { Component } from 'react';
 import { FormControl, FormGroup, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { login } from '../../actions/auth';
 
 class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userInputsEmailAddress: '',
+      userInputsPassword: ''
+    }
+  }
+
+  handleLogin(e) {
+    e.preventDefault();
+    this.props.login({
+      emailAddress: this.state.userInputsEmailAddress,
+      password: this.state.userInputsPassword
+    });
+  }
+
+  handleUserInputsEmailAddress = e => this.setState({ userInputsEmailAddress: e.target.value })
+  handleUserInputsPassword = e => this.setState({ userInputsPassword: e.target.value })
+
   render() {
     const style = {
       container: {
@@ -52,23 +73,29 @@ class Login extends Component {
           <div style={style.form} className='panel panel-default'>
             <div style={style.panelBody} className='panel-body'>
               <h3 style={style.formHeading}>Log in to your account</h3>
-              <FormGroup>
-                <FormControl
-                  type='email'
-                  placeholder='Email address'
-                  style={style.inputEmailAddress}>
-                </FormControl>
-                <FormControl
-                  type='password'
-                  placeholder='Password'
-                  style={style.inputPassword}>
-                </FormControl>
-                <Button
-                  type='submit'
-                  className='btn-primary'
-                  style={style.loginButton}>
-                Log In</Button>
-              </FormGroup>
+              <form onSubmit={this.handleLogin.bind(this)}>
+                <FormGroup>
+                  <FormControl
+                    type='email'
+                    placeholder='Email address'
+                    style={style.inputEmailAddress}
+                    value={this.state.userInputsEmailAddress}
+                    onChange={this.handleUserInputsEmailAddress.bind(this)}>
+                  </FormControl>
+                  <FormControl
+                    type='password'
+                    placeholder='Password'
+                    style={style.inputPassword}
+                    value={this.state.userInputsPassword}
+                    onChange={this.handleUserInputsPassword}>
+                  </FormControl>
+                  <Button
+                    type='submit'
+                    className='btn-primary'
+                    style={style.loginButton}>
+                  Log In</Button>
+                </FormGroup>
+              </form>
             </div>
 
             <div style={style.panelFooter} className='panel-footer'>
@@ -83,4 +110,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = {
+  login
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

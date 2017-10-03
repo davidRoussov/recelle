@@ -6,8 +6,12 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 import api from './api/api';
+
+import initPassport from './passport-init';
 import passport from 'passport';
 import session from 'express-session';
+
+const auth = require('./api/auth')(passport);
 
 // testing database ************************
 // const { Pool, Client } = require('pg');
@@ -28,6 +32,25 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+initPassport(passport);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, './client/build')));
