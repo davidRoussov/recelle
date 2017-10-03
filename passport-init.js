@@ -5,12 +5,28 @@ import config from './config';
 module.exports = function(passport) {
   passport.serializeUser((user, done) => {
     console.log('serializing user: ', user);
-    done(null, user);
+    done(null, user.id);
   });
 
   passport.deserializeUser((id, done) => {
     console.log('deserializing user: ', id);
-    done(null, id);
+    
+    const client = new Client(config.database.url);
+    client.connect().then(() => {
+      const query = 'SELECT * FROM r_user WHERE id = $1;';
+      const params = [id];
+      client.query(query, params)
+        .then(results => {
+          if(results.rowCount === 1) {
+            done(null, results.rows[0]);
+          } else {
+            done('Invalid id');
+          }
+        })
+        .catch(error => {
+          done(error);
+        });
+    });
   });
 
   passport.use('login', new Strategy({ passReqToCallback: true },

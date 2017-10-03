@@ -35,13 +35,15 @@ export const login = creds =>
         ...creds
       })
     })
-    .then(response => response.json())
     .then(response => {
-      console.log('SUCCESS!');
-      console.log(JSON.stringify(response, null, 2));
-    })
-    .catch(error => {
-      console.log('ERROR!');
-      console.log(JSON.stringify(error, null, 2));
+      if(response.status === 200) {
+        dispatch({
+          type: 'REDIRECT_TO_ADMIN'
+        });
+      } else {
+        dispatch({
+          type: 'FAILED_LOGIN'
+        });
+      }
     });
   }
