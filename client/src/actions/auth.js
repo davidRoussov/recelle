@@ -30,12 +30,13 @@ export const login = creds =>
       headers: {
         'Content-Type': 'application/json'
       },
-      mode: 'cors',
       body: JSON.stringify({
         ...creds
-      })
+      }),
+      credentials: 'include'
     })
     .then(response => {
+      console.log(JSON.stringify(response, null, 2));
       if(response.status === 200) {
         dispatch({
           type: 'REDIRECT_TO_ADMIN'

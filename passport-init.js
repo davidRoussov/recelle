@@ -4,7 +4,7 @@ import config from './config';
 
 module.exports = function(passport) {
   passport.serializeUser((user, done) => {
-    console.log('serializing user: ', user);
+    console.log('serializing user: ', user, user.id);
     done(null, user.id);
   });
 

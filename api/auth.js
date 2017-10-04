@@ -11,10 +11,11 @@ module.exports = function(passport) {
   //   console.log(emailAddress, password);
   // });
 
-  // router.post('/login', passport.authenticate('login'),
-  // (request, response) => {
-  //   response.sendStatus(200);
-  // });
+  // router.post('/login', 
+  //   passport.authenticate('login', { 
+  //     failureRedirect: '/login',
+  //     successRedirect: '/admin'
+  // }));
 
   router.post('/login', function(req, res, next) {
     passport.authenticate('login', function(err, user, info) {
