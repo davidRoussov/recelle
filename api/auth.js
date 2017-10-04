@@ -11,11 +11,22 @@ module.exports = function(passport) {
   //   console.log(emailAddress, password);
   // });
 
-  router.post('/login', 
-    passport.authenticate('login', { failureRedirect: '/login' }),
-    function(req, res) {
-      res.redirect('/');
-    });
+  // router.post('/login', 
+  //   passport.authenticate('login', { 
+  //     failureRedirect: '/login',
+  //     successRedirect: '/admin'
+  // }));
+
+  router.post('/login', function(req, res, next) {
+    passport.authenticate('login', function(err, user, info) {
+      if (err) { return next(err); }
+      if (!user) { return res.sendStatus(403); }
+      req.logIn(user, function(err) {
+        if (err) { return next(err); }
+        return res.sendStatus(200);
+      });
+    })(req, res, next);
+  });
 
   return router;
 }

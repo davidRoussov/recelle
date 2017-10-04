@@ -30,11 +30,12 @@ export const login = creds =>
       headers: {
         'Content-Type': 'application/json'
       },
-      mode: 'cors',
       body: JSON.stringify({
         ...creds
-      })
+      }),
+      credentials: 'include'
     })
+    .then(response => console.log(response))
     .then(response => response.json())
     .then(response => {
       console.log('SUCCESS!');
