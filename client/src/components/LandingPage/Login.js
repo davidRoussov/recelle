@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import { FormControl, FormGroup, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
+import Alert from 'react-s-alert';
+
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
+const alertConfig = {
+  position: 'top-right',
+  effect: 'bouncyflip',
+  timeout: 3000
+};
 
 class Login extends Component {
   constructor() {
@@ -16,6 +25,9 @@ class Login extends Component {
     console.log(JSON.stringify(props, null, 2));
     if (props.auth.redirectToAdmin) {
       window.location.href = "http://localhost:3000/admin";
+    }
+    if (props.auth.displayFailedLoginAlert) {
+      Alert.error('Invalid email address or password', alertConfig);
     }
   }
 
@@ -112,6 +124,8 @@ class Login extends Component {
           </div>
           <a style={{color: 'white'}}>Forgot your password?</a>
         </div>
+
+        <Alert stack={{limit: 3}} />
       </div>
     )
   }
