@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormControl, FormGroup, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { login } from '../../actions/auth';
+import { login, hideLoginAlerts } from '../../actions/auth';
 import Alert from 'react-s-alert';
 
 import 'react-s-alert/dist/s-alert-default.css';
@@ -9,7 +9,8 @@ import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 const alertConfig = {
   position: 'top-right',
   effect: 'bouncyflip',
-  timeout: 3000
+  timeout: 3,
+  onShow: () => console.log("blah blah")
 };
 
 class Login extends Component {
@@ -23,11 +24,12 @@ class Login extends Component {
 
   componentWillReceiveProps(props) {
     console.log(JSON.stringify(props, null, 2));
-    if (props.auth.redirectToAdmin) {
+    if (props.redirectToAdmin) {
       window.location.href = "http://localhost:3000/admin";
     }
-    if (props.auth.displayFailedLoginAlert) {
+    if (props.displayFailedLoginAlert) {
       Alert.error('Invalid email address or password', alertConfig);
+      this.props.hideLoginAlerts();
     }
   }
 
@@ -83,6 +85,10 @@ class Login extends Component {
       },
       loginButton: {
         width: '100%'
+      },
+      spinner: {
+        fontSize: '28px',
+        color: 'black'
       }
     };
 
@@ -92,29 +98,34 @@ class Login extends Component {
           <div style={style.form} className='panel panel-default'>
             <div style={style.panelBody} className='panel-body'>
               <h3 style={style.formHeading}>Log in to your account</h3>
-              <form onSubmit={this.handleLogin.bind(this)}>
-                <FormGroup>
-                  <FormControl
-                    type='email'
-                    placeholder='Email address'
-                    style={style.inputEmailAddress}
-                    value={this.state.userInputsEmailAddress}
-                    onChange={this.handleUserInputsEmailAddress.bind(this)}>
-                  </FormControl>
-                  <FormControl
-                    type='password'
-                    placeholder='Password'
-                    style={style.inputPassword}
-                    value={this.state.userInputsPassword}
-                    onChange={this.handleUserInputsPassword}>
-                  </FormControl>
-                  <Button
-                    type='submit'
-                    className='btn-primary'
-                    style={style.loginButton}>
-                  Log In</Button>
-                </FormGroup>
-              </form>
+
+              {this.props.showLoginSpinner ? <i className="fa fa-spinner fa-spin" aria-hidden="true" style={style.spinner}></i> :
+
+                <form onSubmit={this.handleLogin.bind(this)}>
+                  <FormGroup>
+                    <FormControl
+                      type='email'
+                      placeholder='Email address'
+                      style={style.inputEmailAddress}
+                      value={this.state.userInputsEmailAddress}
+                      onChange={this.handleUserInputsEmailAddress.bind(this)}>
+                    </FormControl>
+                    <FormControl
+                      type='password'
+                      placeholder='Password'
+                      style={style.inputPassword}
+                      value={this.state.userInputsPassword}
+                      onChange={this.handleUserInputsPassword}>
+                    </FormControl>
+                    <Button
+                      type='submit'
+                      className='btn-primary'
+                      style={style.loginButton}>
+                    Log In</Button>
+                  </FormGroup>
+                </form>
+
+              }
             </div>
 
             <div style={style.panelFooter} className='panel-footer'>
@@ -124,17 +135,19 @@ class Login extends Component {
           </div>
           <a style={{color: 'white'}}>Forgot your password?</a>
         </div>
+      
 
-        <Alert stack={{limit: 3}} />
+        <Alert/>
       </div>
     )
   }
 }
 
-const mapStateToProps = state => state;
+const mapStateToProps = state => state.auth;
 
 const mapDispatchToProps = {
-  login
+  login,
+  hideLoginAlerts
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

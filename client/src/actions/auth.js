@@ -25,6 +25,10 @@ export const signup = user =>
 
 export const login = creds =>
   dispatch => {
+    dispatch({
+      type: 'SHOW_LOGIN_SPINNER'
+    });
+
     fetch(SERVER_URL + 'auth/login', {
       method: 'POST',
       headers: {
@@ -36,7 +40,6 @@ export const login = creds =>
       credentials: 'include'
     })
     .then(response => {
-      console.log(JSON.stringify(response, null, 2));
       if(response.status === 200) {
         dispatch({
           type: 'REDIRECT_TO_ADMIN'
@@ -46,5 +49,16 @@ export const login = creds =>
           type: 'FAILED_LOGIN'
         });
       }
+    })
+    .then(() => {
+      dispatch({
+        type: 'HIDE_LOGIN_SPINNER'
+      });
+    });
+  }
+
+  export const hideLoginAlerts = () => dispatch => {
+    dispatch({
+      type: 'HIDE_FAILED_LOGIN'
     });
   }
