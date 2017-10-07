@@ -23,7 +23,6 @@ class Login extends Component {
   }
 
   componentWillReceiveProps(props) {
-    console.log(JSON.stringify(props, null, 2));
     if (props.redirectToAdmin) {
       window.location.href = "http://localhost:3000/admin";
     }

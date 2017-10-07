@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import './SideBar.css';
 
 class SideBar extends Component {
@@ -10,7 +12,7 @@ class SideBar extends Component {
 
 
 
-      <div class="row">
+      <div className="row">
           <div className="side-menu">
           
             <nav className="navbar navbar-default">
@@ -40,7 +42,7 @@ class SideBar extends Component {
               <div className="side-menu-container">
                   <ul className="nav navbar-nav">
 
-                      <li><a href=""><span className="glyphicon glyphicon-send"></span>Analysis</a></li>
+                      <li><Link to='/admin/analysis'><span className="glyphicon glyphicon-send"></span>Analysis</Link></li>
                       {/* <li className="active"><a href="#"><span className="glyphicon glyphicon-plane"></span> Active Link</a></li> */}
                       <li><a href=""><span className="glyphicon glyphicon-cloud"></span>Record</a></li>
                       <li><a href=""><span className="glyphicon glyphicon-signal"></span>Research</a></li>
