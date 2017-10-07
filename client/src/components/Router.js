@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import '../index.css';
 import LandingPage from './LandingPage/LandingPage';
@@ -17,15 +17,17 @@ class Router extends Component {
     return (
       <BrowserRouter>
         <div style={{height: '100%'}}>
-          <Route exact path='/' component={LandingPage}/>
-          <Route path='/admin' component={Admin}/>
-          <Route path='/login' component={Login}/>
-          <Route path='/signup' component={Signup}/>
-          <Route path='/intro' component={LandingPage}/>
-          <Route path='/pricing' component={Pricing}/>
-          <Route path='/contact' component={Contact}/>
-          <Route path='/blog' component={Blog}/>
-          <Route component={GenericNotFound} />
+          <Switch>
+            <Route exact path='/' component={LandingPage}/>
+            <Route path='/admin' component={Admin}/>
+            <Route path='/login' component={Login}/>
+            <Route path='/signup' component={Signup}/>
+            <Route path='/intro' component={LandingPage}/>
+            <Route path='/pricing' component={Pricing}/>
+            <Route path='/contact' component={Contact}/>
+            <Route path='/blog' component={Blog}/>
+            <Route component={GenericNotFound} />
+          </Switch>
         </div>
       </BrowserRouter>
     );

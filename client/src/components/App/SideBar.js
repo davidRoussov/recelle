@@ -5,16 +5,21 @@ import './SideBar.css';
 
 class SideBar extends Component {
   render() {
+    const style = {
+      sidebarContainer: {
+        float: 'left',
+        height: '100%',
+        width: '250px'
+      },
+      sidebar: {
+        height: '100%',
+        position: 'relative'
+      }
+    };
+
     return (
-
-
-
-
-
-
-      <div className="row">
-          <div className="side-menu">
-          
+      <div className="row" style={style.sidebarContainer}>
+          <div className="side-menu" style={style.sidebar}>
             <nav className="navbar navbar-default">
               <div className="navbar-header">
                   <div className="brand-wrapper">
@@ -36,7 +41,6 @@ class SideBar extends Component {
                           </div>
                       </div>
                   </div>
-
               </div>
 
               <div className="side-menu-container">
@@ -53,20 +57,6 @@ class SideBar extends Component {
           
           </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     );
   }
 }

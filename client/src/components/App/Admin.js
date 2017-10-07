@@ -10,8 +10,10 @@ class Admin extends Component {
     const style = {
       container: {
         backgroundColor:'#f9f9f9', 
-        height: '100vh',
-        overflow: 'auto'
+        height: '100vh'
+      },
+      mainContent: {
+        marginLeft: '250px'
       }
     };
 
@@ -19,9 +21,11 @@ class Admin extends Component {
       <div style={style.container}>
         <MenuBar/>
         <SideBar/>
-        <Switch>
-          <Route exact path='/admin/analysis' component={Analysis}/>
-        </Switch>
+        <div style={style.mainContent}>
+          <Switch>
+            <Route exact path='/admin/analysis' component={Analysis}/>
+          </Switch>
+        </div>
       </div>
     );
   }
