@@ -24,7 +24,7 @@ class Login extends Component {
 
   componentWillReceiveProps(props) {
     if (props.redirectToAdmin) {
-      window.location.href = "http://localhost:3000/admin";
+      window.location.href = "/admin";
     }
     if (props.displayFailedLoginAlert) {
       Alert.error('Invalid email address or password', alertConfig);
