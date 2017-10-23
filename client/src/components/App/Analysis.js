@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class Analysis extends Component {
   render() {
 
-    const packetTRs = dummyData.map(data => {
+    const packetTRs = dummyData.map((data, i) => {
       return (
-        <tr>
+        <tr key={i}>
           <td>{data.packetID}</td>
           <td>{data.dateAdded}</td>
           <td>{data.lastScanned}</td>

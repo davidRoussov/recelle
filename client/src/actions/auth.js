@@ -1,5 +1,20 @@
 import { SERVER_URL } from '../config';
 
+const handleErrors = response => new Promise((resolve, reject) => {
+  if(response.ok) resolve(response);
+  else {
+    response.json()
+      .then(json => reject(json))
+      .catch(() => reject(response.statusText));
+  }
+});
+
+export const hideAlerts = () => dispatch => {
+  dispatch({
+    type: 'HIDE_ALERTS'
+  });
+};
+
 export const signup = user =>
   dispatch => {
     fetch(SERVER_URL + 'api/signup', {
@@ -12,14 +27,15 @@ export const signup = user =>
         user
       })
     })
-    .then(response => response.json())
+    .then(handleErrors)
     .then(response => {
-      console.log('SUCCESS!');
-      console.log(JSON.stringify(response, null, 2));
+      window.location = '/login';
     })
     .catch(error => {
-      console.log('ERROR!');
-      console.log(JSON.stringify(error, null, 2));
+      dispatch({
+        type: 'ERROR_CREATING_NEW_USER',
+        data: error.message
+      });
     });
   }
 

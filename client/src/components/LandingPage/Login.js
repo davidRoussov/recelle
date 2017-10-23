@@ -3,15 +3,7 @@ import { FormControl, FormGroup, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { login, hideLoginAlerts } from '../../actions/auth';
 import Alert from 'react-s-alert';
-
-import 'react-s-alert/dist/s-alert-default.css';
-import 'react-s-alert/dist/s-alert-css-effects/slide.css';
-const alertConfig = {
-  position: 'top-right',
-  effect: 'bouncyflip',
-  timeout: 3,
-  onShow: () => console.log("blah blah")
-};
+import { alertConfig } from '../../config';
 
 class Login extends Component {
   constructor() {

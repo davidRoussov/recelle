@@ -21,7 +21,7 @@ class MenuBar extends Component {
         <Navbar.Collapse>
           <Nav>
             <NavItem eventKey={1} href="#">Profile</NavItem>
-            <NavItem eventKey={2} href="#">Link</NavItem>
+            <NavItem eventKey={2} href="#">Self Service</NavItem>
             {/* <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
               <MenuItem eventKey={3.1}>Action</MenuItem>
               <MenuItem eventKey={3.2}>Another action</MenuItem>
@@ -31,8 +31,8 @@ class MenuBar extends Component {
             </NavDropdown> */}
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">Link Right</NavItem>
-            <NavItem eventKey={2} href="#">Link Right</NavItem>
+            {/* <NavItem eventKey={1} href="#">Link Right</NavItem> */}
+            <NavItem eventKey={2} onClick={() => window.location = '/'}>Logout</NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

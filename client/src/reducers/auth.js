@@ -10,6 +10,12 @@ const auth = (state = {}, action) => {
       return { ...state, showLoginSpinner: true };
     case 'HIDE_LOGIN_SPINNER':
       return { ...state, showLoginSpinner: false };
+    case 'ERROR_CREATING_NEW_USER':
+      return { ...state, showErrorCreatingUserAlert: true, showErrorCreatingUserAlertMessage: action.data };
+    case 'HIDE_ALERTS':
+      return { ...state, 
+        showErrorCreatingUserAlert: false
+      };
     default:
       return state;
   }

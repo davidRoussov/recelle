@@ -27,7 +27,7 @@ class AppFooter extends Component {
       <div>
         <section style={style.bigFoot}>
           <p style={style.textWhite}>
-          Sed eget lacinia nisl. Nam a quam a elit consequat commodo a a tortor. Vivamus ultricies pretium faucibus. Praesent nec pulvinar elit. Cras commodo malesuada eleifend. Mauris viverra turpis et elementum imperdiet. Fusce eleifend pulvinar enim, ut blandit lorem sagittis ac. Sed vitae congue augue, non dictum lacus. Nulla molestie lorem at ante faucibus commodo. Phasellus in sem eu quam varius tincidunt ut vitae nunc. Curabitur et dui vel velit accumsan vestibulum. Nulla facilisi. Aliquam aliquam ultrices pretium.
+          Recelle offers potential investors (to an amount of AU$400,000) a unique opportunity to be early shareholders (20% equity) in a novel product, aimed at reducing waste and cost in the medical sector, whilst assuring blood transfusion safety.  As the Recelle team are relatively inexperienced, investors willing to contribute and mentor within the company structure will be most valued.  Initial investment will target early phase development and IP protection, in preparation for subsequent licensing deals with major medical firms (to an estimated value of AU$3.5 million, and an early investor ROI of AU$720,000 or 80%).  The Recelle system benefits healthcare efficiency by applying recent advances in laser, sensor and measurement technology to overcome existing, outdated procedures for red blood cell storage, and stands as a unique, innovative and viable investment opportunity.  
           </p>
         </section>
         <footer style={style.littleFoot}>
