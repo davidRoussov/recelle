@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import backgroundImage from '../../images/red4.jpg';
+import backgroundImage from '../../images/red7.jpeg';
 import LandingMenuBar from './LandingMenuBar';
 import AppFooter from '../AppFooter';
 
@@ -20,11 +20,19 @@ class LandingPage extends Component {
         marginRight: 'auto',
         width: '100%',
         padding: '100px',
-        color: 'white'
+        color: 'white',
+        fontSize: '50px',
+        heigth: '100px'
+      },
+      foobar: {
+        color: '#4d0000'
       },
       middle: {
-        display: 'table-cell',
-        verticalAlign: 'middle'
+        // display: 'table-cell',
+        // verticalAlign: 'middle'
+        width: '100%',
+        position: 'absolute',
+        bottom: '40px'
       },
       about: {
         backgroundColor: '#F9F89F9',
@@ -60,7 +68,7 @@ class LandingPage extends Component {
         <div style={{position: 'absolute', width: '100%'}}><LandingMenuBar introActive={true}/></div>
         <header style={style.intro}>
           <div style={style.middle}>
-            <h1 style={style.introTitleMessage}><strong>Re</strong>d blood <strong>cell</strong> <strong>e</strong>valuation system</h1>
+            <h1 style={style.introTitleMessage}><strong style={style.foobar}>Re</strong>d blood <strong style={style.foobar}>cell</strong> <strong style={style.foobar}>e</strong>valuation system</h1>
           </div>
         </header>
         <section style={style.about}>
