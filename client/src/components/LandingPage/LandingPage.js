@@ -25,7 +25,7 @@ class LandingPage extends Component {
         heigth: '100px'
       },
       foobar: {
-        color: '#4d0000'
+        color: '#950403'
       },
       middle: {
         // display: 'table-cell',
