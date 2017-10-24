@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import MenuBar from './MenuBar';
 import SideBar from './SideBar';
 import Analysis from './Analysis';
+import History from './History';
 
 class Admin extends Component {
   render() {
@@ -13,7 +14,8 @@ class Admin extends Component {
         height: '100vh'
       },
       mainContent: {
-        marginLeft: '250px'
+        marginLeft: '250px',
+        height: '100%'
       }
     };
 
@@ -24,6 +26,7 @@ class Admin extends Component {
         <div style={style.mainContent}>
           <Switch>
             <Route exact path='/admin/analysis' component={Analysis}/>
+            <Route exact path='/admin/history' component={History}/>
           </Switch>
         </div>
       </div>

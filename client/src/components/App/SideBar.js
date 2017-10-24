@@ -46,10 +46,9 @@ class SideBar extends Component {
               <div className="side-menu-container">
                   <ul className="nav navbar-nav">
 
-                      <li><Link to='/admin/analysis'><span className="glyphicon glyphicon-send"></span>Analysis</Link></li>
+                      <li><Link to='/admin/analysis'><span className="glyphicon glyphicon-send"></span>Current packets</Link></li>
                       {/* <li className="active"><a href="#"><span className="glyphicon glyphicon-plane"></span> Active Link</a></li> */}
-                      <li><a href=""><span className="glyphicon glyphicon-cloud"></span>Record</a></li>
-                      <li><a href=""><span className="glyphicon glyphicon-signal"></span>Research</a></li>
+                      <li><Link to='/admin/history'><span className="glyphicon glyphicon-cloud"></span>Past packets</Link></li>
 
                   </ul>
               </div>
